@@ -107,6 +107,21 @@ function GraphGenerator() {
   seq = seqStr.map(i => parseInt(i,10))
   console.log(seq, "--",typeof(head_pos))
 
+  fcfs = calculateFCFSSeekTime(seq,head_pos)
+  sstf = calculateSSTFSeekTime(seq,head_pos)
+  scan = calculateSCANSeekTime(seq,head_pos,direction)
+  cScan = calculateCSCANSeekTime(seq,head_pos,direction)
+
+  spanChart1 = document.getElementById("fcfs") 
+  spanChart2 = document.getElementById("sstf")
+  spanChart3 = document.getElementById("scan")
+  spanChart4 = document.getElementById("cScan")
+
+  spanChart1.innerText = fcfs.total
+  spanChart2.innerText = sstf.total
+  spanChart3.innerText = scan.total
+  spanChart4.innerText = cScan.total
+
   var x = document.getElementById("Grap_container");
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -118,28 +133,28 @@ function GraphGenerator() {
       {
         elementId: 'chart1',
         label: 'FCFS Seek Times',
-        data: [12, 15, 10, 20, 14],
+        data: fcfs.seektimes,
         backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
       },
       {
         elementId: 'chart2',
         label: 'SSTF Seek Times',
-        data: [10, 8, 6, 5, 7],
+        data: sstf.seektimes,
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
         borderColor: 'rgba(255, 99, 132, 1)',
       },
       {
         elementId: 'chart3',
         label: 'SCAN Seek Times',
-        data: [14, 12, 9, 11, 10],
+        data: scan.seektimes,
         backgroundColor: 'rgba(75, 192, 192, 0.5)',
         borderColor: 'rgba(75, 192, 192, 1)',
       },
       {
         elementId: 'chart4',
         label: 'C-SCAN Seek Times',
-        data: [13, 16, 8, 9, 15],
+        data: cScan.seektimes,
         backgroundColor: 'rgba(153, 102, 255, 0.5)',
         borderColor: 'rgba(153, 102, 255, 1)',
       }

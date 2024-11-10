@@ -100,7 +100,11 @@ function GraphGenerator() {
 
   if(!sequence || !head_pos || !dir){
     console.log("provide proper inputs.")
+    showAlert(); // This will trigger and show the alert box
     return
+  }
+  else{
+    HideAlert();
   }
 
   seqStr = sequence.split(/\s*,\s*/);
@@ -206,3 +210,22 @@ function GraphGenerator() {
     });
   }
   
+
+// Function to show the alert
+function showAlert() {
+  const alertBox = document.getElementById("alert-2");
+  alertBox.style.display = "flex"; // Show the alert by setting display to 'flex' (or 'block')
+}
+
+function HideAlert() {
+  const alertBox = document.getElementById("alert-2");
+  alertBox.style.display = "none"; // Show the alert by setting display to 'flex' (or 'block')
+}
+
+// Select the close button and add an event listener to hide the alert when clicked
+const alertBox = document.getElementById("alert-2");
+const closeButton = alertBox.querySelector("[data-dismiss-target]");
+
+closeButton.addEventListener("click", function() {
+  alertBox.style.display = "none";
+});

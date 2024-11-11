@@ -126,6 +126,12 @@ function GraphGenerator() {
   spanChart3.innerText = scan.total
   spanChart4.innerText = cScan.total
 
+  labels=[]
+  for(i=0;i<seq.length;i++){
+    ele = `Request ${i+1}`
+    labels.push(ele)
+  }
+
   var x = document.getElementById("Grap_container");
     if (x.style.display === "none") {
       x.style.display = "block";
@@ -169,7 +175,7 @@ function GraphGenerator() {
       const chart = new Chart(ctx, {
         type: 'line', // or 'bar' for a bar chart
         data: {
-          labels: ['Process 1', 'Process 2', 'Process 3', 'Process 4', 'Process 5'], // Example processes
+          labels: labels, // Example processes
           datasets: [{
             label: config.label,
             data: config.data,

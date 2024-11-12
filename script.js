@@ -131,6 +131,7 @@ function GraphGenerator() {
     ele = `Request ${i+1}`
     labels.push(ele)
   }
+  console.log(labels)
 
   var x = document.getElementById("Grap_container");
     if (x.style.display === "none") {
@@ -172,10 +173,13 @@ function GraphGenerator() {
   
     chartConfigs.forEach(config => {
       const ctx = document.getElementById(config.elementId).getContext('2d');
+      console.log("In chart configs"+labels)
       const chart = new Chart(ctx, {
+
         type: 'line', // or 'bar' for a bar chart
         data: {
-          labels: labels, // Example processes
+          labels: seq,
+          // labels: labels, // Example processes
           datasets: [{
             label: config.label,
             data: config.data,
@@ -214,7 +218,57 @@ function GraphGenerator() {
         }
       });
     });
-  }
+    const ctx1 = document.getElementById('chart-total').getContext('2d'); // Single canvas for all lines
+
+    const datasets = chartConfigs.map((config) => ({
+      label: config.label,
+      data: config.data,
+      backgroundColor: config.backgroundColor,
+      borderColor: config.borderColor,
+      borderWidth: 2,
+      fill: false,
+    }));
+    console.log(datasets)
+    
+    const chart = new Chart(ctx1, {
+      type: 'line', // Or 'bar' if needed
+      data: {
+        labels: labels, // x-axis labels, such as processes or time intervals
+        datasets: datasets // Use the mapped datasets array
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false, 
+        scales: {
+          y: {
+            beginAtZero: true,
+            title: {
+              display: true,
+              text: 'Seek Time (ms)',
+            }
+          },
+          x: {
+            title: {
+              display: true,
+              text: 'Processes'
+            }
+          }
+        },
+        onClick: (event, elements) => {
+          if (elements.length > 0) {
+            const elementIndex = elements[0].index;
+            const datasetIndex = elements[0].datasetIndex;
+            const label = chart.data.datasets[datasetIndex].label;
+            const value = chart.data.datasets[datasetIndex].data[elementIndex];
+            alert(`${label} - Value: ${value}`);
+          }
+        }
+      }
+    });
+    
+
+}
+  
   
 
 // Function to show the alert

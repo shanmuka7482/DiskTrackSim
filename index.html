@@ -155,7 +155,7 @@
     </div>
 
     <!-- Graph -->
-    <div class="px-6 py-20 font-[sans-serif] flex flex-col items-center bg-gray-100 hidden" id="Grap_container">
+    <div class="px-6 py-20 font-[sans-serif] flex flex-col items-center bg-gray-100 hidden" id="Grap_container" style="display: none;">
       <h2 class="text-4xl font-extrabold leading-tight mb-6 text-center">Disk Scheduling Performance</h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mx-auto w-full">
@@ -174,6 +174,10 @@
         <div class="chart-container">
           <canvas id="chart4" class="my-8"></canvas>
           <p>Total Seek Time: <span id="cScan"></span></p>
+        </div>
+        <div class="chart-container col-span-2 ">
+          <canvas id="chart-total" class="my-8"></canvas>
+          <!-- <p>Total Seek Time: <span id="cScan"></span></p> -->
         </div>
       </div>
       

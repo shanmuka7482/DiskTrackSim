@@ -126,6 +126,8 @@ function GraphGenerator() {
   spanChart3.innerText = scan.total
   spanChart4.innerText = cScan.total
 
+  console.log("scan:",scan.seektimes,"cscan:",cScan.seektimes)
+
   labels=[]
   for(i=0;i<seq.length;i++){
     ele = `Request ${i+1}`
@@ -211,7 +213,7 @@ function GraphGenerator() {
             x: {
               title: {
                 display: true,
-                text: 'Processes'
+                text: 'Requests'
               }
             }
           }
@@ -230,10 +232,10 @@ function GraphGenerator() {
     }));
     console.log(datasets)
     
-    const chart = new Chart(ctx1, {
+    const chart2 = new Chart(ctx1, {
       type: 'line', // Or 'bar' if needed
       data: {
-        labels: labels, // x-axis labels, such as processes or time intervals
+        labels: seq, // x-axis labels, such as processes or time intervals
         datasets: datasets // Use the mapped datasets array
       },
       options: {
@@ -250,7 +252,7 @@ function GraphGenerator() {
           x: {
             title: {
               display: true,
-              text: 'Processes'
+              text: 'Requests'
             }
           }
         },

@@ -44,7 +44,11 @@ DiskTrackSim is a web-based tool designed to simulate and compare different disk
 - **C-LOOK**
 
 ## Screenshots
-_Add images or GIFs of the project interface here._
+![image](https://github.com/user-attachments/assets/40c489a6-2051-4ced-9b87-a3b788d698c7)
+![image](https://github.com/user-attachments/assets/8a7342c5-622c-492c-8fd4-357b0cf789fc)
+![image](https://github.com/user-attachments/assets/c15a08d8-28eb-478d-b564-c182f4ae6a5f)
+![image](https://github.com/user-attachments/assets/0df64f3a-a139-40ff-b63a-7502f69bb684)
+
 
 ## Future Enhancements
 - Implement additional disk scheduling algorithms.
